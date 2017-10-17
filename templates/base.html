@@ -6,7 +6,11 @@
 <!doctype html>
     <html>
             <meta charset="UTF-8">
-            <title>{{title}}</title>
+        <style>
+            .error {
+                color: red;
+            }     
+        </style>
         <head>
             <title>{{title}}</title>
         </head>
@@ -15,22 +19,18 @@
                
                 <div class="container">
                     <nav class="header">
-                    <a href="/blog" sytle= "display:inline-block;" >Main Blog Page</a>&emsp;&emsp;&emsp;       
-                    <a href="/post" style= "display:inline-block;">Add A Blog Entry</a> 
+                        <a href="/">Home </a>&nbsp&nbsp&nbsp
+                        <a href="/blog" class="left spacing">View All Posts</a>&nbsp&nbsp&nbsp
+                        <a href="/newpost"><i class="fa fa-pencil" aria-hidden="true"></i> New Post</a>&nbsp&nbsp&nbsp&nbsp
+                        <a href="/logout" class="right"><i class="fa fa-sign-out"></i> Logout</a>&nbsp&nbsp&nbsp
+                        <a href="/login" class="right spacing"><i class="fa fa-sign-in"></i> Login</a>   
                     </nav>
                 </div>
                 
-        
                 {% block content %}
                 {% endblock %}
-            
-               </div>
-            
-            </body>
-</html>
-            
-            
-</html>
+           
+
 
 
 
