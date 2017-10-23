@@ -1,16 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+textarea {
+  margin: 10px 0;
+  width: 260px;
+  height: 120px;
+} 
+</style>
       <div class="new-post">
 
         <h1 class="post-header">New Post</h1>
 
         <form method='post'>
+          <label for="title">Your Title Here:</label><br> 
+          <input type="text" name="title" value='{{blog_title}}'/>{{blog_title}}
+          <p class="error">{{title_error}}</p><br>
 
-          <input type="text" name="title" value='{{blog_title}}' placeholder="Your Title Here"/>
-          <p class="error">{{title_error}}</p><br><br>
-
-          <textarea type="text" name="body" placeholder="Your Text Here">{{blog_body}}</textarea>
+          <label for="body">Your Text Here:</label><br>
+          <textarea type="text" name="body">{{blog_body}}</textarea>
           <p class="error">{{body_error}}</p><br>
 
           <input type="submit" value="Post"/>
@@ -19,3 +27,4 @@
 
       </div>
 {% endblock %}
+

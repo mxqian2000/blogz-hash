@@ -1,25 +1,46 @@
 
+
+
 {% extends "base.html" %}
 
 {% block content %}
-      <div class="signup">
 
-        <h1>Sign up to start posting!</h1>
+<html> 
+    <body>
+    
+    <style>
+        <title>Singup</title>
+        <style text/css
+        
+        span {color: red;}
+             label{
+              display: block;
+              float: left;
+              width : 120px;    
+        }
+        br {margin-bottom: 20px;}
+    </style>
+    
+    <h1>Sign up to start posting!</h1>
+    <form method = 'POST'>
+        <label for="username">Username</label>
+        <input name="username" type="text"/>  
+        <span class="error">{{username_error}}</span>
+        <br>
+        <label for="password">Password</label>
+        <input name="password" type="password" /> 
+        <span class="error">{{password_error}}</span>
+        <br>
+        <label for="verify">Verify Password</label>
+        <input name="verify"  type="password" />
+        <span class="error">{{verify_error}}</span>
+        <br>
+        <label for="submit"></label>
+        <input type="submit"  value = "sign up"/>
+        <br>
+    
+    </form>    
+ </body>
+</html>
 
-        <form action="/signup" method="POST">
-
-          <input name="username" type="text" value="{{ username }}" placeholder="Username">
-          <p class="error">{{ username_error }}{{ exist_error }}</p>
-
-          <input name="password" type="password" value="{{ password }}" placeholder="Password">
-          <p class="error">{{ password_error }}</p>
-
-          <input name="verify" type="password" value="{{ verify }}" placeholder="Verify Password">
-          <p class="error">{{ verify_error }}</p>
-
-          <input type="submit" value="Sign Up">
-
-        </form>
-
-      </div>
 {% endblock %}

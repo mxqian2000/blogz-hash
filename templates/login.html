@@ -1,23 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<style>
+  <title>Login</title>
+  <style text/css
+  
+  span {color: red;}
+       label{
+        display: block;
+        float: left;
+        width : 120px;    
+  }
+  br {margin-bottom: 20px;}
+</style>
       <div class="login">
 
         <h1>Login</h1>
 
-        <form action="/login" method="POST">
+      <form action="/login" method="POST">
 
-          <input name="username" type="text" value="{{ username }}" placeholder="Username">
-          <p class="error">{{ username_error }}</p>
+        <label for="username">Username</label>
+        <input name="username" type="text"/>  
+        <span class="error">{{username_error}}</span>
+        <br>
+        <label for="password">Password</label>
+        <input name="password" type="password" /> 
+        <span class="error">{{password_error}}</span>
+        <br>
+        <label for="submit"></label>
+        <input type="submit"  value = "Submit Query"/>
+        <br>
 
-          <input name="password" type="password" placeholder="Password">
-          <p class="error">{{ password_error }}</p>
+      </form>
 
-          <input type="submit" value="login">
-
-        </form>
-
-        <p class="signup-text">Don't have an account? <a href="/signup">Sign Up</a></p>
+        <p class="signup-text">Don't have an account? <a href="/signup">Create One!</a></p>
 
       </div>
 {% endblock %}
+

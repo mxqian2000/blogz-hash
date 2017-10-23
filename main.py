@@ -94,6 +94,7 @@ def signup():
 
     return render_template('signup.html')
 
+
 @app.route('/')
 def index():
     users = User.query.all()
@@ -104,13 +105,12 @@ def blog():
     blog_id = request.args.get('id')
     user_id = request.args.get('userid')
     posts = Blog.query.order_by(Blog.pub_date.desc())
-
     if blog_id:
         post = Blog.query.filter_by(id=blog_id).first()
         return render_template("post.html", title=post.title, body=post.body, user=post.owner.username, pub_date=post.pub_date, user_id=post.owner_id)
     if user_id:
         entries = Blog.query.filter_by(owner_id=user_id).all()
-        return render_template('user.html', entries=entries)
+        return render_template('singleuser.html', entries=entries)
 
     return render_template('blog.html', posts=posts)
 
@@ -123,12 +123,12 @@ def newpost():
     title = request.form['title']
     body = request.form["body"]
     owner = User.query.filter_by(username=session['username']).first()
-    title_error = ""
-    body_error = ""
-    if title == "":
+    title_error = ''
+    body_error = ''
+    if len(title) == 0:
         title_error = "Please fill in the title."
-    if body == "":
-        body_error = "Please fill in the body."
+    if len(body) == 0:
+        body_error = "Please fill in the textarea."
     if not title_error and not body_error:
         new_post = Blog(title, body, owner)
         db.session.add(new_post)
@@ -140,8 +140,11 @@ def newpost():
 
 @app.route('/logout')
 def logout():
-    del session['username']
-    return redirect('/')
-
+        del session ['username']    
+        return redirect('/blog')
+    
 if __name__ == '__main__':
     app.run()
+
+
+
