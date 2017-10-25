@@ -24,7 +24,7 @@
     <h1>Sign up to start posting!</h1>
     <form method = 'POST'>
         <label for="username">Username</label>
-        <input name="username" type="text"/>  
+        <input name="username" value= "{{username}}" type="text" />  
         <span class="error">{{username_error}}</span>
         <br>
         <label for="password">Password</label>
@@ -44,3 +44,4 @@
 </html>
 
 {% endblock %}
+

@@ -53,7 +53,7 @@ def login():
         if not user:
             return render_template('login.html', username_error="Username does not exist.")
         else:
-            return render_template('login.html', password_error="Your username or password was incorrect.")
+            return render_template('login.html', username=username, username_error=username_error, password_error="Your password was incorrect.")
     return render_template('login.html')
 
 @app.route("/signup", methods=['POST', 'GET'])
@@ -82,7 +82,7 @@ def signup():
             verify_error = "Passwords do not match."
         if exist:
             username_error = "Username already taken."
-        if len(username) > 3 and len(password) > 4 and password == verify and not exist:
+        if len(username) > 3 and len(password) > 3 and password == verify and not exist:
             new_user = User(username, password)
             db.session.add(new_user)
             db.session.commit()
