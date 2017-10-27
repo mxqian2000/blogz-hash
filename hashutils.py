@@ -12,8 +12,8 @@ def make_pw_hash(password, salt = None):
     return '{0}, {1}'.format(hash, salt)
 
 def check_pw_hash(password, hash):
-    slat = hash.split(',')[1]
-    if make.pw_hash(password, salt) == hash:
+    salt = hash.split(',')[1]
+    if make_pw_hash(password, salt) == hash:
         return True
     else:
         False
